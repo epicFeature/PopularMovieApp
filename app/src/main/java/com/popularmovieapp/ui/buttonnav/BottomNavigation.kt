@@ -10,6 +10,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.popularmovieapp.ui.theme.Orange600
 
 @Composable
 fun BottomNavigation(
@@ -42,7 +43,7 @@ fun BottomNavigation(
                         fontSize = 9.sp
                     )
                 },
-                selectedContentColor = Color.Red,
+                selectedContentColor = Orange600,
                 unselectedContentColor = Color.Gray
             )
         }
