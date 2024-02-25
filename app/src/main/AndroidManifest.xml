@@ -16,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PopularMovieApp"
-        tools:targetApi="s">
+        tools:targetApi="26">
         <activity
             android:name=".MainActivity"
             android:exported="true"
