@@ -30,7 +30,7 @@ object RetrofitModule {
                     chain.request().newBuilder()
                         .addHeader("Accept", "application/json")
                         .addHeader("Content-type", "application/json")
-                        .addHeader("X-API-KEY", "J0M94EQ-MAGMZ2N-JEYB7A1-0J2QJ10")//token
+                        .addHeader("X-API-KEY", "PUT TOKEN HERE")//token
                         .build()
                         .let { chain.proceed(it) }
                 }
