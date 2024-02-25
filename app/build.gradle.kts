@@ -12,7 +12,7 @@ android {
     defaultConfig {
         applicationId = "com.popularmovieapp"
         minSdk = 26
-        targetSdk = 34
+        targetSdk = 26 //по ТЗ
         versionCode = 1
         versionName = "1.0"
 

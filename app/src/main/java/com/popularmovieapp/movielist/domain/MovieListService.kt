@@ -1,7 +1,7 @@
-package com.popularmovieapp.network.data
+package com.popularmovieapp.movielist.domain
 
-import com.popularmovieapp.network.movielist.MovieListDataApi
-import com.popularmovieapp.network.movielist.model.MovieData
+import com.popularmovieapp.movielist.api.MovieListDataApi
+import com.popularmovieapp.movielist.api.model.MovieData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

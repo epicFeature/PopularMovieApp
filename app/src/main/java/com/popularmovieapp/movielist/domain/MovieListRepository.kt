@@ -1,8 +1,5 @@
-package com.popularmovieapp.network.repository
+package com.popularmovieapp.movielist.domain
 
-import com.popularmovieapp.network.data.MovieListService
-import com.popularmovieapp.network.movielist.item.Movie
-import com.popularmovieapp.network.movielist.item.toMovie
 import javax.inject.Inject
 
 class MovieListRepository @Inject constructor(private val movieListService: MovieListService){

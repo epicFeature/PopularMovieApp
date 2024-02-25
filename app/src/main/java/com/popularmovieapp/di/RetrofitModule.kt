@@ -1,10 +1,10 @@
 package com.popularmovieapp.di
 
-import com.popularmovieapp.network.common.Constants
-import com.popularmovieapp.network.data.MovieListService
-import com.popularmovieapp.network.movielist.MovieListDataApi
-import com.popularmovieapp.network.movielist.domain.GetMovieListUseCase
-import com.popularmovieapp.network.repository.MovieListRepository
+import com.popularmovieapp.movielist.api.ApiConstants
+import com.popularmovieapp.movielist.domain.MovieListService
+import com.popularmovieapp.movielist.api.MovieListDataApi
+import com.popularmovieapp.movielist.domain.GetMovieListUseCase
+import com.popularmovieapp.movielist.domain.MovieListRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,7 +12,6 @@ import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -24,7 +23,7 @@ object RetrofitModule {
     @ViewModelScoped
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL)
+            .baseUrl(ApiConstants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(OkHttpClient().newBuilder().addInterceptor(
                 Interceptor { chain ->
@@ -40,7 +39,6 @@ object RetrofitModule {
     }
 
     //MovieList
-
     @Provides
     @ViewModelScoped
     fun provideMovieListDataApi(retrofit: Retrofit): MovieListDataApi {

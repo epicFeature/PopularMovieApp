@@ -8,25 +8,28 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.popularmovieapp.R
+import coil.compose.rememberImagePainter
+import com.popularmovieapp.movielist.domain.Movie
 
 
 @Composable
-fun MovieDetailScreen() {
+fun MovieDetailScreen(
+    movie: Movie
+) {
+    val image = rememberImagePainter(data = movie.poster)
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -34,12 +37,13 @@ fun MovieDetailScreen() {
             .padding(16.dp)
     ) {
         Image(
-            painter = painterResource(id = R.drawable.ic_launcher_background),
-            contentDescription = "movie poster big",
+            painter = image,
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(400.dp)
-                .clip(RectangleShape)
+                .clip(RoundedCornerShape(10.dp))
         )
         Row(modifier = Modifier.fillMaxWidth()) {
             Column(
@@ -47,7 +51,7 @@ fun MovieDetailScreen() {
                     .weight(weight = 1F, fill = true)
             ) {
                 Text(
-                    text = "Movie Name Eng",
+                    text = movie.alternativeName,
                     fontSize = 14.sp,
                     color = Color.Gray,
                     textAlign = TextAlign.Center,
@@ -56,7 +60,7 @@ fun MovieDetailScreen() {
                         .padding(top = 16.dp)
                 )
                 Text(
-                    text = "Movie Name Rus",
+                    text = movie.name,
                     fontSize = 25.sp,
                     color = Color.Black,
                     fontWeight = FontWeight.Bold,
@@ -65,19 +69,9 @@ fun MovieDetailScreen() {
                         .fillMaxWidth()
                         .padding(top = 8.dp)
                 )
-                Text(
-                    text = "genre, genre, genre",
-                    fontSize = 18.sp,
-                    color = Color.Gray,
-                    fontWeight = FontWeight.Medium,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 8.dp)
-                )
             }
             Text(
-                text = "7.2",
+                text = movie.rating,
                 fontSize = 25.sp,
                 color = Color.Black,
                 fontWeight = FontWeight.Bold,
@@ -88,13 +82,24 @@ fun MovieDetailScreen() {
             )
         }
         Text(
-            text = "Description",
+            text = movie.genres,
+            fontSize = 18.sp,
+            color = Color.Gray,
+            fontWeight = FontWeight.Medium,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp)
+        )
+        Text(
+            text = movie.description,
             fontSize = 14.sp,
             color = Color.Gray,
+            overflow = TextOverflow.Ellipsis,
+            textAlign = TextAlign.Justify,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 16.dp)
         )
-
     }
 }

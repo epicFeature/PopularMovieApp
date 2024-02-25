@@ -1,7 +1,5 @@
-package com.popularmovieapp.network.movielist.domain
+package com.popularmovieapp.movielist.domain
 
-import com.popularmovieapp.network.movielist.item.Movie
-import com.popularmovieapp.network.repository.MovieListRepository
 import javax.inject.Inject
 
 class GetMovieListUseCase @Inject constructor(
@@ -10,6 +8,4 @@ class GetMovieListUseCase @Inject constructor(
      suspend operator fun invoke(): List<Movie> {
         return movieListRepository.getMovieListData()
     }
-
-
 }

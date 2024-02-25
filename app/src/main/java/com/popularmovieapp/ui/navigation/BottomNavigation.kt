@@ -1,4 +1,4 @@
-package com.popularmovieapp.ui.buttonnav
+package com.popularmovieapp.ui.navigation
 
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
@@ -27,19 +27,19 @@ fun BottomNavigation(
         val currentRout = backStackEntry?.destination?.route
         listItems.forEach { item ->
             BottomNavigationItem(
-                selected = currentRout == item.route,
+                selected = currentRout == item.navScreen.route,
                 onClick = {
-                    navController.navigate(item.route)
+                    navController.navigate(item.navScreen.route)
                 },
                 icon = {
                     Icon(
-                        imageVector = item.icon,
+                        imageVector = item.navScreen.icon,
                         contentDescription = "Icon"
                     )
                 },
                 label = {
                     Text(
-                        text = item.label,
+                        text = item.navScreen.label,
                         fontSize = 9.sp
                     )
                 },
